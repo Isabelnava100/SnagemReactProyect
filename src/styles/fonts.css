@@ -1,0 +1,215 @@
+
+@font-face {
+  font-family: 'Manrope Light';
+  src: url('../assets/fonts/ManropeExtraLight-Light.woff2') format('woff2'),
+      url('../assets/fonts/ManropeExtraLight-Light.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Manrope';
+  src: url('../assets/fonts/Manrope.woff2') format('woff2'),
+      url('../assets/fonts/Manrope.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: 'Manrope Regular';
+  src: url('../assets/fonts/ManropeExtraLight-Regular.woff2') format('woff2'),
+      url('../assets/fonts/ManropeExtraLight-Regular.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Manrope Medium';
+  src: url('../assets/fonts/ManropeExtraLight-Medium.woff2') format('woff2'),
+      url('../assets/fonts/ManropeExtraLight-Medium.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Manrope SemiBold';
+  src: url('../assets/fonts/ManropeExtraLight-SemiBold.woff2') format('woff2'),
+      url('../assets/fonts/ManropeExtraLight-SemiBold.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Manrope Bold';
+  src: url('../assets/fonts/ManropeExtraLight-Bold.woff2') format('woff2'),
+      url('../assets/fonts/ManropeExtraLight-Bold.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Manrope ExtraBold';
+  src: url('../assets/fonts/ManropeExtraLight-ExtraBold.woff2') format('woff2'),
+      url('../assets/fonts/ManropeExtraLight-ExtraBold.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: 'Open Sans-Light';
+  src: url('../assets/fonts/OpenSans-Light.woff2') format('woff2'),
+      url('../assets/fonts/OpenSans-Light.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('../assets/fonts/OpenSans.woff2') format('woff2'),
+      url('../assets/fonts/OpenSans.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Open Sans-Regular';
+  src: url('../assets/fonts/OpenSans-Regular.woff2') format('woff2'),
+      url('../assets/fonts/OpenSans-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Open Sans-Medium.';
+  src: url('../assets/fonts/OpenSans-Medium.woff2') format('woff2'),
+      url('../assets/fonts/OpenSans-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: 'Open Sans-Italic';
+  src: url('../assets/fonts/OpenSans-Italic.woff2') format('woff2'),
+      url('../assets/fonts/OpenSans-Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Open Sans-MediumItalic';
+  src: url('../assets/fonts/OpenSans-MediumItalic.woff2') format('woff2'),
+      url('../assets/fonts/OpenSans-MediumItalic.woff') format('woff');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Open Sans-Bold';
+  src: url('../assets/fonts/OpenSans-Bold.woff2') format('woff2'),
+      url('../assets/fonts/OpenSans-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Open Sans-BoldItalic';
+  src: url('../assets/fonts/OpenSans-BoldItalic.woff2') format('woff2'),
+      url('../assets/fonts/OpenSans-BoldItalic.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+
+@font-face {
+  font-family: 'Open Sans-SemiBoldItalic';
+  src: url('../assets/fonts/OpenSans-SemiBoldItalic.woff2') format('woff2'),
+      url('../assets/fonts/OpenSans-SemiBoldItalic.woff') format('woff');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+
+
+@font-face {
+  font-family: 'Open Sans-ExtraBold';
+  src: url('../assets/fonts/OpenSans-ExtraBold.woff2') format('woff2'),
+      url('../assets/fonts/OpenSans-ExtraBold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Open Sans-ExtraBoldItalic';
+  src: url('../assets/fonts/OpenSans-ExtraBoldItalic.woff2') format('woff2'),
+      url('../assets/fonts/OpenSans-ExtraBoldItalic.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+
+
+
+@font-face {
+  font-family: 'Quantico';
+  src: url('../assets/fonts/Quantico.woff2') format('woff2'),
+      url('../assets/fonts/Quantico.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Quantico-Regular';
+  src: url('../assets/fonts/Quantico-Regular.woff2') format('woff2'),
+      url('../assets/fonts/Quantico-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Quantico-Italic';
+  src: url('../assets/fonts/Quantico-Italic.woff2') format('woff2'),
+      url('../assets/fonts/Quantico-Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Quantico-Bold';
+  src: url('../assets/fonts/Quantico-Bold.woff2') format('woff2'),
+      url('../assets/fonts/Quantico-Bold.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Quantico-BoldItalic';
+  src: url('../assets/fonts/Quantico-BoldItalic.woff2') format('woff2'),
+      url('../assets/fonts/Quantico-BoldItalic.woff') format('woff');
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}

@@ -1,0 +1,277 @@
+@import url("fonts.css");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --w:#fff;
+    --b:#3f3f3f;
+    --color-primary:#6b21a8;
+    --color-secondary:#4338ca;
+    --color-neutral:#1e293b;
+    --color-cancel:#b91c1c;
+    --color-accept:#166534;
+    --bg-body:#f9fafb ;
+    --bg-layout:#fff;
+    --bg-container:#e5e7eb;
+    --bg-gradient:#a78bfa;
+    --nav-font-family: "Quantico-Regular", "Open Sans-Regular";
+  }
+  .dark {
+    --w:#171717;
+    --b:#fff;
+    --color-primary:  #8b5cf6;
+    --color-secondary:#312e81;
+    --color-neutral:#1e3a8a;
+    --bg-body:#252526;
+    --bg-layout:#1E1E1E;
+    --bg-container:#3C3C3C;
+    --bg-gradient: #685AD3;
+  }
+  .easter {
+    --color-primary:#fb7185;
+    --color-secondary: #9d174d;
+    --color-neutral:#701a75;
+    --bg-body: #fecdd3;
+    --bg-layout:#fff;
+    --bg-container: #fdf2f8;
+    --bg-gradient:#f472b6;
+  }
+
+  input,select,textarea {
+    color:blackC;
+    margin:4px;
+    padding:4px;
+    border:1px solid white;
+    background:var(--bg-body);
+    border-color:var(--color-primary);
+  }
+  textarea{
+    min-height:200px;
+  }
+  label {
+    margin:4px;
+  }
+  select,option {
+    max-width: 300px;    
+    overflow: hidden; 
+  }
+}
+
+
+
+body {
+  font-family: "Manrope Regular" ;
+  @apply pb-6;
+}
+.parentContainerBase {
+  @apply px-1 bg-backgroundLayout border-backgroundLayout border-2 sm:rounded-lg text-blackC pb-10;
+}
+.insideContainer {
+  @apply sm:p-2 bg-backgroundContainer border-2 sm:rounded-lg border-backgroundLayout;
+}
+#menu-toggle {
+  display: none;
+}
+#menu-toggle:checked + #navbar {
+  display: block;
+}
+
+
+.nav-links {
+  font-family: var(--nav-font-family);
+  @apply block mt-4 lg:inline-block lg:mt-0 hover:text-white lg:mr-10 lg:border-0 lg:p-0
+  underline-offset-2 hover:underline uppercase p-4;
+}
+
+.navbar-active {
+  text-decoration: underline;
+  font-family:'Quantico-BoldItalic';
+  
+}
+
+.small-nav-cont {
+  border-top:1px solid white;
+  @apply py-2 px-4 gap-2 w-full flex flex-row overflow-x-auto scroll-pl-4 
+   bg-backgroundBody snap-x snap-mandatory opacity-80;
+
+}
+
+.small-nav { 
+  font-family:'Manrope Medium'; 
+    @apply text-base rounded-md px-3 w-max text-blackC whitespace-nowrap border-backgroundBody
+    relative snap-start scroll-ml-1 border-b-4 tracking-wider uppercase
+    hover:border-backgroundGradient cursor-pointer hover:text-secondary
+    hover:bg-white opacity-75 hover:opacity-100; 
+}
+.small-nav.active {
+  @apply bg-white font-bold border-secondary text-secondary;
+}
+
+
+.btn {
+  font-family: var(--nav-font-family);
+@apply rounded-md text-white;
+}
+.btn-small {
+  @apply  py-1 px-2;
+}
+.btn-medium {
+  @apply  py-2 px-4;
+}
+.btn-large {
+  @apply  py-4 px-12;
+}
+
+.btn-forum-pages {
+  @apply btn btn-small m-1 hover:text-whiteC bg-backgroundGradient;
+}
+.form-input,.form-select,.form-multiselect,.form-textarea {
+  @apply mt-1 p-2 block w-full bg-backgroundLayout rounded-lg;
+}
+
+.table-auto {
+  @apply m-1 md:m-4 z-0;
+}
+.table-auto a{
+  @apply hover:underline underline-offset-2;
+}
+.table-auto span {
+  @apply text-sm mt-1;
+}
+.table-header-group th {
+  font-family:'Open Sans-Bold';
+  @apply text-left font-normal text-xs md:text-base p-3 uppercase  text-secondary
+  bg-backgroundGradient opacity-80 border-t-2 border-backgroundGradient;
+}
+
+.table-row td{
+  font-family:'Open Sans-Light';
+  @apply p-2 md:p-5 border-b-2 border-backgroundGradient text-sm md:text-base w-10;
+}
+.table-row td:nth-child(odd),.table-header-group th:nth-child(odd){
+  @apply border-l-2 border-backgroundGradient;
+}
+.table-row td:nth-child(even),.table-header-group th:nth-child(even){
+  @apply border-r-2 border-backgroundGradient text-right;
+}
+
+
+
+.table-row:nth-child(odd){
+  background-color:rgba(131, 131, 131, 0.1);
+}
+
+input:checked {
+  filter:  hue-rotate(30deg);
+}
+
+.easter input:checked {
+  filter:  hue-rotate(120deg);
+}
+
+
+::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: var(--bg-body);
+}
+
+::-webkit-scrollbar
+{
+	width: 12px;height:12px;
+	background-color:var(--bg-body);
+}
+
+::-webkit-scrollbar-thumb
+{
+	-webkit-box-shadow: inset 0 0 4px rgba(0,0,0,.3);
+	background-color: var(--bg-gradient);
+}
+
+h1.title {
+  font-family:'Quantico-Bold'; 
+  @apply md:mt-4 my-2 md:px-4 md:text-4xl text-center text-2xl tracking-wider uppercase;
+}
+
+h3 {
+  font-family: 'Open Sans-Bold';
+  @apply text-lg;
+}
+
+hr.style-two {
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(0,0,0,0.5), rgba(255, 255, 255, 0.5), rgba(0, 0, 0,0.5));
+  @apply my-4;
+}
+
+.single-forum-post-container {
+  @apply flex gap-3 mx-1 p-1 flex-col sm:flex-row;
+}
+
+.forum-post-user-container {
+  @apply w-full sm:w-1/2 sm:w-1/6 flex justify-start flex-row sm:flex-col pl-4 sm:pl-0;
+}
+.forum-post-text-container {
+  @apply flex flex-col w-full sm:w-4/5;
+}
+.forum-long-text {
+  @apply  border-2 rounded flex p-2;
+}
+.forum-post-footer {
+  @apply flex flex-row place-content-between order-first sm:order-none;
+}
+.forum-post-footer-team {
+  @apply ml-2 border-x-2 pb-3 border-t-2 sm:border-b-2 sm:border-t-0 rounded-t sm:rounded-b sm:rounded-t-none px-2 flex;
+}
+.forum-post-footer-time{
+  @apply text-xs mt-1 text-right order-last sm:order-none;
+}
+
+.lastthreepost {
+  height:400px;
+  @apply flex p-4 flex-col gap-2 sm:basis-1/2;
+}
+.singlepreviouspost {
+  height:250px;
+  @apply w-full border p-2 rounded-l-lg overflow-auto;
+}
+
+.loading-container {
+  @apply flex text-white justify-center content-center mt-4;
+}
+
+.loading-container h1 {
+@apply text-7xl;
+}
+
+.roleContainerperChara {
+  @apply relative;
+}
+
+.eachRoleButton {
+	background-color: var(--bg-gradient);
+  @apply p-1 rounded-md relative;
+}
+.rolebg-Supporter {
+  @apply bg-amber-600;
+}
+.rolebg-Admin {
+  @apply bg-rose-600;
+}
+
+.hoverRoleDesc {
+  width:125px;
+  @apply hidden bg-whiteC p-1 rounded-md absolute top-6 left-0 z-10; 
+}
+
+.roleContainerperChara:hover .hoverRoleDesc {
+  @apply block;
+}
+
+.forum-team-pokemon-sprites{
+  height:40px;width:auto;
+  @apply sm:h-auto;
+}
