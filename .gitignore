@@ -94,6 +94,9 @@ dist
 # Serverless directories
 .serverless/
 
+# all pokemon sprite for upload size
+src/assets/pokemon/*
+
 # FuseBox cache
 .fusebox/
 
