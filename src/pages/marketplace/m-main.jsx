@@ -1,6 +1,5 @@
 import React from 'react'; //imr
 import Navigation from '@components/navigation/header';
-import wip from "@images/openingsoonbanner.png";
 
 const place="Marketplace";
 
@@ -16,8 +15,7 @@ const Marketplacemain = () => {
       <div className="parentContainerBase col-span-12 flex flex-col gap-1">
          
       <p className="mt-2 text-lg justify-center flex">
-      
-      <img src={wip} alt="opening soon" width="700"/>
+      Tiny shop redux test:
       </p>
 
         </div>

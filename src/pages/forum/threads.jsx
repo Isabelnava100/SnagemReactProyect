@@ -1,5 +1,6 @@
 import React, { useState, useEffect,useContext } from "react";
 import ReactPaginate from "react-paginate";
+import DOMPurify from 'dompurify';
 import moment from "moment";
 import axios from "axios";
 import { useParams } from "react-router";
@@ -26,7 +27,7 @@ const Topicthread = () => {
   const [itemOffset, setItemOffset] = useState(0);
   const [forcePage, setForcePage] = useState(-1);
 
-  const itemsPerPage = 2;
+  const itemsPerPage = 4;
 
 
   const getTeam=async()=>{
@@ -155,7 +156,10 @@ const Topicthread = () => {
                         "hh:mm a - MMMM DD, YYYY"
                       )}
                     </div>
-                  <div className="forum-long-text">{posts.thread_post}</div>
+                  <div className="forum-long-text"
+                  dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(posts.thread_post)}}
+                  >               
+                    </div>
                   <div className="forum-post-footer">
                     <div className="forum-post-footer-team">
                     {allteams.length&&allteams?                 
@@ -193,7 +197,7 @@ update forums if needed
 
       t_author:userName, 
 
-upload wip to github */
+      */
 
   return (
     <>
@@ -208,7 +212,7 @@ upload wip to github */
              <div className="flex justify-end mx-5 mb-2">
                 <Link
                   to={"/postNew/"+basicReply}
-                  className="btn btn-medium hover:bg-secondary bg-backgroundGradient"
+                  className="btn btn-medium btn-secondary"
                 >
                   Make a Reply
                 </Link>
@@ -219,10 +223,10 @@ upload wip to github */
               {paginationView ? 
               <ReactPaginate
               containerClassName="flex mx-5 flex-wrap"
-              pageLinkClassName="btn-forum-pages"
-              nextLinkClassName="btn-forum-pages"
-              previousLinkClassName="btn-forum-pages"
-              activeLinkClassName="border-2"
+              pageLinkClassName="btn-forum-pages btn"
+              nextLinkClassName="btn-forum-pages btn"
+              previousLinkClassName="btn-forum-pages btn"
+              activeLinkClassName="btn-forum-pages btn btn-forum-pages-active"
               disabledLinkClassName="cursor-default opacity-10"
               breakLabel="..."
               nextLabel=">"
@@ -244,7 +248,7 @@ upload wip to github */
           <div className="flex justify-end mx-5 mb-2">
             <Link
               to={"/postNew/"+basicReply}
-              className="btn btn-medium hover:bg-secondary bg-backgroundGradient"
+              className="btn btn-medium btn-secondary"
             >
               Make a Reply
             </Link>

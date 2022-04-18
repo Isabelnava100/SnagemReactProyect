@@ -53,7 +53,7 @@ const Forumain = () => {
           <div className="flex justify-end mx-5">
             <Link
               to="/forumNew"
-              className="btn btn-medium hover:bg-secondary bg-backgroundGradient"
+              className="btn btn-medium btn-secondary"
             >
               Make a New Topic
             </Link>

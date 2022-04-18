@@ -1,6 +1,8 @@
 import React, { useState, useRef,useContext,useEffect } from "react";
 import Navigation from "@components/navigation/header";
 import axios from "axios";
+import DOMPurify from 'dompurify';
+import Texteditor from "@components/forum/richtexteditor"
 import { useNavigate } from "react-router-dom";
 import AppContext from "@context/AppContext";
 import useIdChara from "@hooks/fnctn/useIdChara";
@@ -65,8 +67,8 @@ const Newtopic = () => {
     e.preventDefault();
     setSubmitB(false);
     const formData=new FormData(form.current);
-    
-    if(formData.get('content')&&formData.get('content')) {
+    let myContent = DOMPurify.sanitize(tinymce.get("IDtextarea").getContent(), { USE_PROFILES: { html: true } });
+    if(myContent&&formData.get('title')) {
     const data_topic={
       topic_title:formData.get('title'),
       forum:formData.get('location'),   
@@ -75,7 +77,7 @@ const Newtopic = () => {
     const data_thread={     
       post_character_id:formData.get('character'),
       post_team_id:formData.get('team'),
-      thread_post:formData.get('content')
+      thread_post:myContent
     }
     const data_forum = {      
       id:formData.get('location')
@@ -129,16 +131,22 @@ const Newtopic = () => {
       <Navigation place={place} />
 
       <main className="grid grid-cols-12">
-        <div className="parentContainerBase col-span-12 flex flex-col gap-1">
+        <div className="parentContainerBase col-span-12 flex flex-col gap-1 gradient-greenor h-full">
           <h1 className="title">Make a New Topic</h1>
           <div className="flex justify-center">
           <form action="/" className="flex flex-col max-w-100" ref={form}>
-            <div>
-            <label htmlFor="title">Topic Title:</label>
-            <input type="text" name="title" placeholder="Subject Name" required/>
+
+          <div className='grid place-content-center grid-cols-1 md:grid-cols-2 md:gap-8'>
+          <div>
+            <label htmlFor="title">Topic Title:
+            <input type="text" className="form-input" name="title" placeholder="Subject Name" required/>
+            </label>
+
+              <label htmlFor="description">Short Description:
+            <input type="text" className="form-input" name="description" placeholder="Short Description" required/></label>
            
-            <label htmlFor="location">Location:</label>
-            <select name="location">
+            <label htmlFor="location">Location:
+            <select name="location" className="form-select">
             {links.map((e,i) => (
 
           arr.some((v => e.roles.includes(v)))? (
@@ -150,14 +158,14 @@ const Newtopic = () => {
           ))}
         
               
-          </select>
-          </div>
-          <div>
-            <label htmlFor="character">Character Host:</label>
+          </select></label>
+          
+
+            <label htmlFor="character">Character Host:
           
           {charalist.length?
               <select name="character" onChange={e => characterChanges(e.target.value)}
-              value={selectedOption}>               
+              value={selectedOption} className="form-select">               
                { charalist.map((e,i)=>
                 <option value={i} key={e[0]}>{e[1]}</option>
                 )}
@@ -167,14 +175,15 @@ const Newtopic = () => {
             You have no characters created! Go to this link to create a character.
             </p>
             }
+            </label>
             </div>
             
             {currentTeam.length?
-            <>
+            <div>
             <label htmlFor="team">Team:</label>
             {currentTeam[0][0].pokemon?
             <><div id="showTeams">
-               <select name="team">
+               <select name="team" className="form-select">
             {currentTeam.map((r,i)=>
             <option value={i} key={i}>
             {r.map(e=>
@@ -184,13 +193,12 @@ const Newtopic = () => {
             )}
                </select></div>
                
-               <label htmlFor="description">Short Description:</label>
-            <input type="text" name="description" placeholder="Short Description" required/>
+             
             <label htmlFor="text">First Post Content:</label>
-            <textarea name="content" placeholder="First post content" required></textarea>
+            <Texteditor/>
             <div className="flex justify-end px-1 py-2">
               {submitB ? 
-              <button type="submit" className="btn bg-backgroundGradient btn-small" 
+              <button type="submit" className="btn btn-primary btn-small" 
               onClick={handleSubmit}>Submit</button>
               :
               null}
@@ -203,14 +211,15 @@ const Newtopic = () => {
           </p>
           }
           
-          </>
+          </div>
           :null
           }
-          
+          </div>
           </form>
           </div>
           
         </div>
+        
       </main>
 
 

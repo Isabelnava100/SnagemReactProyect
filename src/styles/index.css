@@ -24,7 +24,7 @@
     --color-primary:  #8b5cf6;
     --color-secondary:#312e81;
     --color-neutral:#1e3a8a;
-    --bg-body:#252526;
+    --bg-body:#262626;
     --bg-layout:#1E1E1E;
     --bg-container:#3C3C3C;
     --bg-gradient: #685AD3;
@@ -40,12 +40,8 @@
   }
 
   input,select,textarea {
-    color:blackC;
-    margin:4px;
-    padding:4px;
-    border:1px solid white;
-    background:var(--bg-body);
-    border-color:var(--color-primary);
+    
+    @apply text-blackC mb-2 p-2;
   }
   textarea{
     min-height:200px;
@@ -60,13 +56,19 @@
 }
 
 
-
+.bg-neutral-800 {
+  background-color:#262626;
+}
 body {
-  font-family: "Manrope Regular" ;
-  @apply pb-6;
+  @apply 
+  font-manrope-medium;
+  
 }
 .parentContainerBase {
-  @apply px-1 bg-backgroundLayout border-backgroundLayout border-2 sm:rounded-lg text-blackC pb-10;
+  @apply px-1  text-blackC pb-10;
+}
+.parentContainerBaseP0 {
+  @apply bg-backgroundLayout text-blackC;
 }
 .insideContainer {
   @apply sm:p-2 bg-backgroundContainer border-2 sm:rounded-lg border-backgroundLayout;
@@ -99,38 +101,80 @@ body {
 }
 
 .small-nav { 
-  font-family:'Manrope Medium'; 
     @apply text-base rounded-md px-3 w-max text-blackC whitespace-nowrap border-backgroundBody
     relative snap-start scroll-ml-1 border-b-4 tracking-wider uppercase
     hover:border-backgroundGradient cursor-pointer hover:text-secondary
-    hover:bg-white opacity-75 hover:opacity-100; 
+    hover:bg-white opacity-75 hover:opacity-100
+    font-manrope-medium; 
 }
 .small-nav.active {
   @apply bg-white font-bold border-secondary text-secondary;
 }
 
+.nav-calc-height {
+  /*28 desktop 32 phone*/
+  height: calc(100vh - 130px);
+}
+@media only screen and (max-width: 640px) {
+  .nav-calc-height {
+    /*28 desktop 32 phone*/
+    height: calc(100vh - 64px);
+  }
+} 
+
 
 .btn {
-  font-family: var(--nav-font-family);
-@apply rounded-md text-white;
+  
+@apply rounded-md text-white cursor-pointer border-2 hover:bg-transparent tracking-wide font-quantico;
 }
 .btn-small {
-  @apply  py-1 px-2;
+  @apply  py-1 px-2 text-sm;
 }
 .btn-medium {
   @apply  py-2 px-4;
 }
 .btn-large {
-  @apply  py-4 px-12;
+  @apply  py-4 px-12 text-lg ;
+}
+
+.btn-primary{
+  @apply hover:text-primary bg-primary border-primary;
+}
+.btn-secondary{
+  @apply hover:text-secondary bg-secondary border-secondary;
+}
+.btn-neutral{
+  @apply hover:text-neutral bg-neutral border-neutral;
+}
+
+.btn-accept{
+  @apply hover:text-blackC bg-accept border-accept;
+}
+.btn-cancel{
+  @apply hover:text-blackC bg-cancel border-cancel;
 }
 
 .btn-forum-pages {
-  @apply btn btn-small m-1 hover:text-whiteC bg-backgroundGradient;
+  @apply btn btn-small m-1 
+  hover:text-secondary bg-secondary border-secondary;
+}
+.btn-forum-pages-active{
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
+  @apply hover:text-primary bg-primary border-primary;
+}
+.form-checkbox,.form-radio {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 .form-input,.form-select,.form-multiselect,.form-textarea {
-  @apply mt-1 p-2 block w-full bg-backgroundLayout rounded-lg;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  @apply p-2 block w-full  bg-backgroundContainer rounded-lg;
 }
 
+.invert {
+  filter: invert(85%);
+}
+
+.quickmsg {max-width:300px;  word-wrap: break-word;}
 .table-auto {
   @apply m-1 md:m-4 z-0;
 }
@@ -141,14 +185,13 @@ body {
   @apply text-sm mt-1;
 }
 .table-header-group th {
-  font-family:'Open Sans-Bold';
-  @apply text-left font-normal text-xs md:text-base p-3 uppercase  text-secondary
-  bg-backgroundGradient opacity-80 border-t-2 border-backgroundGradient;
+  @apply text-left font-normal text-xs md:text-base p-3 uppercase text-secondary
+  bg-backgroundGradient opacity-80 border-t-2 border-backgroundGradient
+  font-open-sans-bold;
 }
 
 .table-row td{
-  font-family:'Open Sans-Light';
-  @apply p-2 md:p-5 border-b-2 border-backgroundGradient text-sm md:text-base w-10;
+  @apply p-2 md:p-5 border-b-2 border-backgroundGradient text-sm md:text-base w-10 font-open-sans-light;
 }
 .table-row td:nth-child(odd),.table-header-group th:nth-child(odd){
   @apply border-l-2 border-backgroundGradient;
@@ -191,13 +234,22 @@ input:checked {
 }
 
 h1.title {
-  font-family:'Quantico-Bold'; 
-  @apply md:mt-4 my-2 md:px-4 md:text-4xl text-center text-2xl tracking-wider uppercase;
+  @apply md:mt-4 my-2 md:px-4 md:text-4xl text-center text-2xl tracking-wider uppercase
+  font-quantico-bold;
+}
+
+h1.biggest {
+  @apply text-6xl font-bold lg:text-8xl text-center tracking-wider;
+}
+
+h2 {
+  @apply text-4xl 
+  font-open-sans-bold;
 }
 
 h3 {
-  font-family: 'Open Sans-Bold';
-  @apply text-lg;
+  @apply text-lg
+  font-open-sans-bold;
 }
 
 hr.style-two {
@@ -218,7 +270,7 @@ hr.style-two {
   @apply flex flex-col w-full sm:w-4/5;
 }
 .forum-long-text {
-  @apply  border-2 rounded flex p-2;
+  @apply  border-2 rounded p-2 bg-gray-200 text-black;
 }
 .forum-post-footer {
   @apply flex flex-row place-content-between order-first sm:order-none;
@@ -235,8 +287,13 @@ hr.style-two {
   @apply flex p-4 flex-col gap-2 sm:basis-1/2;
 }
 .singlepreviouspost {
-  height:250px;
-  @apply w-full border p-2 rounded-l-lg overflow-auto;
+  height:250px;word-wrap: break-word;
+  @apply w-full border p-2 rounded-l-lg overflow-auto shadow-md;
+}
+
+.singlepreviouspostProfile {
+  font-size:60%;height:100px;word-wrap: break-word;
+  @apply w-full flex flex-col p-2 rounded-l-lg overflow-auto shadow-md;
 }
 
 .loading-container {
@@ -244,7 +301,7 @@ hr.style-two {
 }
 
 .loading-container h1 {
-@apply text-7xl;
+@apply text-7xl text-blackC;
 }
 
 .roleContainerperChara {
@@ -253,7 +310,7 @@ hr.style-two {
 
 .eachRoleButton {
 	background-color: var(--bg-gradient);
-  @apply p-1 rounded-md relative;
+  @apply p-1 rounded-md relative text-white;
 }
 .rolebg-Supporter {
   @apply bg-amber-600;
@@ -275,3 +332,198 @@ hr.style-two {
   height:40px;width:auto;
   @apply sm:h-auto;
 }
+
+.gradient-pink { /* 404 */
+  background: linear-gradient(to right, rgb(1, 13, 34), rgb(111, 0, 55));
+}
+
+.gradient-greenor{ /* make new topic-post */
+  
+  background: linear-gradient(to right, rgba(195, 55, 100, 0.75), rgba(29, 38, 113,0.75));
+}
+
+.tox-menubar button,.tox-toolbar__group button,.tox-split-button {
+  
+  @apply !text-xs !m-0 flex items-center justify-center;
+}
+.tox-menubar,.tox-toolbar__group,.tox-toolbar__group,.tox-toolbar__primary {
+  height: 30px!important;
+  @apply !items-center;
+}
+
+.tox-editor-header {
+  @apply !p-0;
+}
+
+.tox+button,.tox-statusbar__branding {
+  display:none;
+}
+
+.tox {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  @apply !border-backgroundBody;
+}
+.tox-editor-container button,.tox-tbtn__select-label {
+@apply !text-blackC;
+}
+.tox-editor-container svg,.tox-toolbar__overflow svg,
+.tox-collection__item-icon {
+  fill:var(--b)!important;
+}
+.tox-menubar,.tox-toolbar__primary,
+.tox-toolbar__overflow,.tox-editor-header{
+  @apply !bg-backgroundContainer;
+}
+.tox-toolbar-overlord{
+ @apply !bg-backgroundBody;
+}
+
+.tox-statusbar,.tox-edit-area__iframe{
+  @apply !border-backgroundBody !bg-gray-200;
+}
+
+.tox .tox-tbtn--enabled:hover,.tox .tox-tbtn--enabled,
+.tox .tox-tbtn:hover,.tox .tox-mbtn:hover,
+.tox .tox-mbtn .tox-mbtn--select,
+.tox .tox-mbtn--enabled:hover,.tox .tox-mbtn--enabled,
+.tox .tox-mbtn--active:hover,.tox .tox-mbtn--active{
+  @apply !bg-primary;
+}
+.tox .tox-collection--list .tox-collection__item--active
+,.tox .tox-toolbar__overflow--focused
+{
+  @apply !bg-purple-100;
+}
+
+ .tox .tox-toolbar__overflow
+ {background-image:none!important;}
+
+ #tinymce td,.forum-long-text td {
+  word-wrap: break-word;word-break:break-all;
+ }
+.singlepreviouspost h1,.forum-long-text h1 {
+  @apply text-7xl;
+ }
+.singlepreviouspost h2,.forum-long-text h2 {
+  @apply text-5xl;
+ }
+.singlepreviouspost h3,.forum-long-text h3 {
+  @apply text-3xl;
+ }
+.singlepreviouspost h4,.forum-long-text h4 {
+  @apply text-xl;
+ }
+.singlepreviouspost h5,.forum-long-text h5 {
+  @apply text-sm;
+ }
+.singlepreviouspost h6,.forum-long-text h6 {
+  @apply text-xs;
+ }
+ .singlepreviouspost{
+   font-size:75%;
+ }
+ #tinymce h1 {
+  font-size: 4.5rem!important; /* 72px */
+  line-height: 1!important;
+ }
+ #tinymce h2{
+  font-size: 3rem!important; /* 48px */
+  line-height: 1!important;
+ }
+ #tinymce h3 {
+  font-size: 1.875rem!important; /* 30px */
+  line-height: 2.25rem!important; /* 36px */
+ }
+ #tinymce h4 {
+  font-size: 1.25rem!important; /* 20px */
+  line-height: 1.75rem!important; /* 28px */
+ }
+ #tinymce h5 {
+  font-size: 0.875rem!important; /* 14px */
+  line-height: 1.25rem!important; /* 20px */
+ }
+ #tinymce h6 {
+  font-size: 0.75rem!important; /* 12px */
+  line-height: 1rem!important; /* 16px */
+ }
+ .forum-long-text {
+   @apply font-open-sans-regular;
+ }
+ .dashboardgrid {
+   @apply inline-grid grid-cols-3 gap-4;
+ }
+
+ .dashboardgrid div {   
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+   @apply bg-backgroundLayout p-2 rounded text-sm;
+ }
+
+ .coincontent img{
+   @apply float-left mr-2;
+ }
+ .coincontent strong,.itemcattab h4 {
+   @apply tracking-wider;
+ }
+ .recentpostsD {
+height:350px;
+@apply row-span-1 overflow-auto;
+ }
+ .itemtablist {
+height:288px;
+@apply row-span-1 overflow-auto flex flex-col col-span-3 sm:col-span-1 gap-2;
+ }
+ @media only screen and (max-width: 640px) {
+  .recentpostsD,.itemtablist{
+     height:52vh;
+   }
+ } 
+
+ .itemcattab{
+   @apply flex justify-between flex-col gap-2 text-sm;
+ }
+.itemcattab h4 {
+  @apply border-b-2 border-secondary opacity-80;
+}
+.itemcattab .extra {
+ @apply flex justify-between w-full gap-2 items-center rounded p-1;
+}
+  .itemcattab .centerthis {
+  @apply flex gap-4 items-center;}
+  .itemcattab .tinybold {
+    
+  }
+.itemcattab .img {
+@apply w-5 h-auto p-1 rounded mr-1;}
+.itemcattab .extra:hover {}
+.itemcattab .img:hover {
+@apply bg-secondary cursor-pointer;}
+
+.tooltip,.tooltipHover {
+@apply relative;
+}
+
+.tooltiptext {
+  max-width: 250px;
+  @apply invisible rounded p-2 top-9 absolute bg-secondary z-10;
+}
+.tooltip .img:hover + .tooltiptext,.tooltiptext:hover,.tooltipHover:hover .tooltiptext {
+  @apply visible;
+}
+.divSnagProfile{
+  @apply  text-primary text-base;
+}
+.divSnagProfile:hover{
+  @apply cursor-pointer underline;}
+input[type=checkbox].profile,
+input[type=checkbox].profile:checked ~ .remove-check{
+@apply hidden;
+}
+#lastpostbox {
+  @apply block; /* should be hidden */
+}
+input[type=checkbox].profile:checked + #lastpostbox{
+  @apply block;
+}
+
+
+

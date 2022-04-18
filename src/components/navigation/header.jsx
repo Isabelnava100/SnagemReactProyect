@@ -1,15 +1,14 @@
-import React, { useState,useContext  } from "react";
+import React, { useState,useContext,memo  } from "react";
 import { Link } from "react-router-dom";
 import MenuIcon from "@images/menuicon.svg";
 import XIcon from "@images/xicon.svg";
 import Submenu from "@components/navigation/submenu";
 import AppContext from "@context/AppContext"; 
 
-const Navigation = (props) => {
+const Navigation = memo((props) => {
 
   const [mainMenuIcon, setMenuIcon] = useState(false);
   const {state:{allRoles}}=useContext(AppContext);
-  
   let loginName = (sessionStorage.length ? 'Profile' : 'Login');
   
   const handleMenuVis = () => {
@@ -39,6 +38,7 @@ const Navigation = (props) => {
           <img
             src={mainMenuIcon ? XIcon : MenuIcon}
             className="h-6 w-6 cursor-pointer z-20 relative block lg:hidden"
+            loading="lazy" alt="navigation menu"
             onClick={handleMenuVis}
           />
         </label>
@@ -82,6 +82,6 @@ const Navigation = (props) => {
         
     </header>
   );
-};
+});
 
 export default Navigation;

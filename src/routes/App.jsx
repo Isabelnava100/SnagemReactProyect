@@ -14,6 +14,10 @@ import Marketplacemain from '@pages/marketplace/m-main';
 import Activitiesmain from '@pages/activities/a-main';
 import Loginmain from '@pages/profile/login-main';
 import Profilemain from '@pages/profile/profile-main';
+import Register from '@pages/profile/register';
+import ValidateUser from '@pages/profile/validateuser';
+import ValidateResetPw from '@pages/profile/resetpw';
+import ForgotPw from '@pages/profile/forgotpw';
 import Erpg from '@pages/404';
 
 const App = () => {
@@ -36,6 +40,10 @@ const App = () => {
         <Route path="/Users" element={<Usersmain/>} />1 
         <Route path="/profile" element={<Profilemain/>} />
         <Route path="/login" element={<Loginmain/>} />
+        <Route path="/forgot" element={<ForgotPw/>} />
+        <Route path="/reset_password/:selector/:token" element={<ValidateResetPw/>} />
+        <Route path="/validate_user/:selector/:token" element={<ValidateUser/>} />
+        <Route path="/register" element={<Register/>} />
         <Route path="*" element={<Erpg/>} /> 
         
       </Switch>

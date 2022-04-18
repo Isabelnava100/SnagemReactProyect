@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import Navigation from "@components/navigation/header";
+import DOMPurify from 'dompurify';
 import axios from "axios";
+import Texteditor from "@components/forum/richtexteditor"
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router";
 import Notli from "@components/user/notloggedin";
@@ -42,27 +45,30 @@ const Newpost = () => {
 
   const handleSubmit=async(e)=>{
     e.preventDefault();
-   setSubmitB(false);
+  setSubmitB(false);
     const formData=new FormData(form.current);
-    if(formData.get('content')) {
+    let myContent = DOMPurify.sanitize(tinymce.get("IDtextarea").getContent(), { USE_PROFILES: { html: true } });
+    if(myContent) {
         
     const data_thread={   
       username: userName,   
       token:userToken,
       post_character_id:formData.get('character'),
       post_team_id:formData.get('team'),
-      thread_post:formData.get('content'),
+      thread_post:myContent,
       topic_id:replyto
       
     }
-    const result = await axios
+    
+    console.log(data_thread);
+    await axios
       .post(`${url}forums/newPost.php`, {
        data_thread:data_thread
       })
       .then((result) => {
-     // console.log(result.data);
+     //console.log(result.data);
       //setSubmitB(true);
-       navigate("/threads/"+replyto+"/last");
+     navigate("/threads/"+replyto+"/last");
       });
       
 }else {alert("Form must be filled.");
@@ -123,7 +129,7 @@ setSubmitB(true);}
       <Navigation place={place} />
 
       <main className="grid grid-cols-12">
-        <div className="parentContainerBase col-span-12 flex flex-col gap-1">
+        <div className="parentContainerBase col-span-12 flex flex-col gap-1 gradient-greenor h-full">
           <h1 className="title">
             {loading2?
             topicTitle
@@ -136,7 +142,7 @@ setSubmitB(true);}
             <label htmlFor="character">Character Host:</label>
             {charalist.length?
               <select name="character" onChange={e => characterChanges(e.target.value)}
-              value={selectedOption}>               
+              value={selectedOption}  className="form-select">               
                { charalist.map((e,i)=>
                 <option value={i} key={e[0]}>{e[1]}</option>
                 )}
@@ -154,7 +160,7 @@ setSubmitB(true);}
             <label htmlFor="team">Team:</label>
             {currentTeam[0][0].pokemon?
             <>
-               <select name="team">
+               <select name="team"  className="form-select">
             {currentTeam.map((r,i)=>
             <option value={i} key={i}>
             {r.map(e=>
@@ -164,11 +170,13 @@ setSubmitB(true);}
             )}
                </select>
                <label htmlFor="text" className="block">Content:</label>
-            <textarea name="content" className="w-full" placeholder="Your post content" required></textarea>
+
+               <Texteditor/>
+
             
             <div className="flex justify-end px-1 py-2">
               {submitB ? 
-              <button type="submit" className="btn bg-backgroundGradient btn-small" 
+              <button type="submit" className="btn btn-primary btn-small" 
               onClick={handleSubmit}>Submit</button>
                 :
                 null}
@@ -198,7 +206,8 @@ setSubmitB(true);}
                {last2Post.map(e=>
                <div className="singlepreviouspost"
                key={e.name.substring(0,4)+e.thread_post.substring(0,4)+e.lastpostTime.substring(0,4)}>
-               { e.thread_post}
+               <div   dangerouslySetInnerHTML={{__html: DOMPurify.sanitize(e.thread_post)}}></div>
+               
                <div className="text-xs text-right">
                  {e.username+' as '+e.name}
                  <br/>

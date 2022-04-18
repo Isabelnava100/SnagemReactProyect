@@ -1,11 +1,10 @@
-import React,{useState,} from "react";
+import React,{useState,memo} from "react";
 import { Link } from "react-router-dom";
 
-const Submenu = (props) => {
+const Submenu = memo((props) => {
   const loginUser = sessionStorage.getItem("username")?sessionStorage.getItem("username"):'Guest';
   const location = props.place;
   const roles = props.roles;
-
 
   let links = {
     // Homepage: [
@@ -70,7 +69,7 @@ const Submenu = (props) => {
         : null
     ))   :null
 
-    //console.log(filtered)
+    //console.log(roles);
 
   return (
     <>
@@ -108,6 +107,6 @@ const Submenu = (props) => {
       ) : null}
     </>
   );
-};
+});
 
 export default Submenu;

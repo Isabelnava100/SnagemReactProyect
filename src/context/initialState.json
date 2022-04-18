@@ -1,0 +1,9 @@
+{
+    "initialState":{
+        "mylist":[],
+        "trends":[
+            {"id":1,"name":"info here"},
+            {"id":2,"name":"info here2"},
+        ]
+    }
+}
